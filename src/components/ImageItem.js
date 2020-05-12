@@ -2,9 +2,9 @@ import React from 'react'
 
 const ImageItem = ({ image }) => {
     return (
-        <div>
-            <img src={image} alt="" className='responsive-img'/>
-        </div>
+        <section>
+            <img src={image} alt="" />
+        </section>
     )
 }
 
