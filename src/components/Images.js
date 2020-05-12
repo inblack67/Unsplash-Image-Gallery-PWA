@@ -29,11 +29,6 @@ const Images = () => {
         setImages(images.concat(moreImages));
     }
 
-
-    // if(!images){
-    //     return <Preloader />
-    // }
-
     return (
         <InfiniteScroll dataLength={images.length} next={fetchFurther} hasMore={true} loader={<Preloader />}>
         <div className='images'>
