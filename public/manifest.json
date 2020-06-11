@@ -3,8 +3,8 @@
     "name": "Unsplash Infinite Image Gallery",
     "icons": [
         {
-            "src": "./React-icon.svg",
-            "type": "icon",
+            "src": "./images/logo.png",
+            "type": "image/png",
             "sizes": "1024x1024"
         }
     ],

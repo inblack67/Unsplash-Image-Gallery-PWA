@@ -8,6 +8,8 @@ import Preloader from './Preloader'
 
 const Images = () => {
 
+    const [loading, setLoading] = useState(true);
+
     useEffect(() => {
         getImages();
         // eslint-disable-next-line
@@ -17,7 +19,7 @@ const Images = () => {
     const count = 100;
 
     const getImages = async () => {
-
+        setLoading(false);
         const res = await axios(`https://api.unsplash.com/photos/random?client_id=${process.env.REACT_APP_UNSPLASH_ACCESS_KEY}&count=${count}`);
         const images = res.data.map(image => image.urls.full)
         setImages(images);
@@ -27,6 +29,10 @@ const Images = () => {
         const res = await axios(`https://api.unsplash.com/photos/random?client_id=${process.env.REACT_APP_UNSPLASH_ACCESS_KEY}&count=${count}}`);
         const moreImages = res.data.map(image => image.urls.full)
         setImages(images.concat(moreImages));
+    }
+
+    if(loading){
+        return <Preloader />
     }
 
     return (
