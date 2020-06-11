@@ -14,7 +14,7 @@ const Images = () => {
     },[])
 
     const[images, setImages] = useState([]);
-    const count = 20;
+    const count = 100;
 
     const getImages = async () => {
 

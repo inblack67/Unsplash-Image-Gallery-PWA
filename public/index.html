@@ -3,20 +3,23 @@
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="./React-icon.svg" />
+    <link rel="apple-touch-icon" href="./React-icon.svg" />
+    <link rel="manifest" href="./manifest.json" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
       content="Infinite Scroll Over Pagination"
     />
-
-    <!-- font awesome -->
-    <script src="https://use.fontawesome.com/de4553fdc0.js"></script>
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
-
     <title>Unsplash Infinite Image Gallery</title>
   </head>
   <body>
     <div id="root"></div>
+    <script>
+      if('serviceWorker' in navigator){
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./serviceworker.js').then(res => console.log('Success')).catch(err => console.log('Failure', err));
+        })
+      }
+    </script>
   </body>
 </html>
