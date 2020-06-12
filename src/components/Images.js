@@ -16,7 +16,7 @@ const Images = () => {
     },[])
 
     const[images, setImages] = useState([]);
-    const count = 100;
+    const count = 1000;
 
     const getImages = async () => {
         setLoading(false);
