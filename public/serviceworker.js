@@ -7,7 +7,6 @@ const self = this;  // serviceWorker itself
 self.addEventListener('install', e => {
     e.waitUntil(
         caches.open(CACHE_NAME).then(cache => {
-            console.log('Cache Opened!');
             return cache.addAll(urlsToCache);
         })
     )

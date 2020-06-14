@@ -7,32 +7,35 @@ import './Images.css';
 import Preloader from './Preloader'
 
 const Images = () => {
-
-    const [loading, setLoading] = useState(true);
-
     useEffect(() => {
         getImages();
         // eslint-disable-next-line
     },[])
 
     const[images, setImages] = useState([]);
-    const count = 1000;
+    const count = 50;
 
     const getImages = async () => {
-        setLoading(false);
-        const res = await axios(`https://api.unsplash.com/photos/random?client_id=${process.env.REACT_APP_UNSPLASH_ACCESS_KEY}&count=${count}`);
-        const images = res.data.map(image => image.urls.full)
-        setImages(images);
+        try {
+            const res = await axios(`https://api.unsplash.com/photos/random?client_id=${process.env.REACT_APP_UNSPLASH_ACCESS_KEY}&count=${count}`);
+            const images = res.data.map(image => image.urls.full)
+            setImages(images);  
+            return res;  
+        } catch (err) {
+            console.error(err)
+        }
     }
 
     const fetchFurther = async () => {
-        const res = await axios(`https://api.unsplash.com/photos/random?client_id=${process.env.REACT_APP_UNSPLASH_ACCESS_KEY}&count=${count}}`);
-        const moreImages = res.data.map(image => image.urls.full)
-        setImages(images.concat(moreImages));
-    }
+        try {
+            const res = await getImages();
 
-    if(loading){
-        return <Preloader />
+            const images = res.data.map(image => image.urls.full)
+
+            setImages(images.concat(images));   
+        } catch (err) {
+            console.error(err)
+        }
     }
 
     return (
