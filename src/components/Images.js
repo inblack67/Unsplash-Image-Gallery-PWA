@@ -13,7 +13,7 @@ const Images = () => {
     },[])
 
     const[images, setImages] = useState([]);
-    const count = 50;
+    const count = 5;
 
     const getImages = async () => {
         try {
@@ -30,9 +30,9 @@ const Images = () => {
         try {
             const res = await getImages();
 
-            const images = res.data.map(image => image.urls.full)
+            const newImages = res.data.map(image => image.urls.full)
 
-            setImages(images.concat(images));   
+            setImages(images.concat(newImages));   
         } catch (err) {
             console.error(err)
         }
